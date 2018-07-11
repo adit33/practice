@@ -28,30 +28,7 @@
       <div class="tile is-parent">
       <div class="tile is-child box">
         <div class="columns is-multiline">
-          <div class="column is-6-tablet is-4-desktop">
-           <card></card>
-          </div>
-          <div class="column is-6-tablet is-4-desktop">
-             <card></card>
-          </div>
-          <div class="column is-6-tablet is-4-desktop">
-             <card></card>
-          </div>
-          <div class="column is-6-tablet is-4-desktop">
-            <div class="box">
-
-            </div>
-          </div>
-          <div class="column is-6-tablet is-4-desktop">
-            <div class="box">
-
-            </div>
-          </div>
-          <div class="column is-6-tablet is-4-desktop">
-            <div class="box">
-
-            </div>
-          </div>
+          
         </div>
       </div>
     </div>
@@ -89,11 +66,22 @@ import './assets/sass/app.scss';
 import Breadcrumb from "./components/Breadcrumb";
 import Navbar from "./components/Navbar";
 import Card from "./components/Card";
+import axios from 'axios';
 export default {
   components:{
     'navbar':Navbar,
     'breadcrumb':Breadcrumb,
     'card':Card
+  },
+  data(){
+    return {
+      products:[]
+    }
+  },
+  mounted(){
+    axios.get('http://localhost:3000/products').then(response=>{
+      this.products=response.data;
+    })
   }
 }
 </script>

@@ -1,0 +1,24 @@
+{
+    "products" :[
+        {
+            "name":"indomie",
+            "description":"indomie rasa ayam bawang dengan ayam asli",
+            "price":2500            
+        },
+        {
+            "name":"susu",
+            "description":"susu murni",
+            "price":4500            
+        },
+        {
+            "name":"kopi ABC",
+            "description":"Kopi Susu ABC",
+            "price":1500            
+        },
+        {
+            "name":"Minyak Goreng",
+            "description":"Minyak goreng kemasan 1 liter",
+            "price":25000            
+        }
+    ]
+}

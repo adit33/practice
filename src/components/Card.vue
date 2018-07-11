@@ -2,7 +2,7 @@
      <div class="card">
               <div class="card-content">
                 <p class="title">
-                  “There are two hard things in computer science: cache invalidation, naming things, and off-by-one errors.”
+                  {{ product.description }}
                 </p>
                 <p class="subtitle">
                   Jeff Atwood
@@ -11,7 +11,7 @@
               <footer class="card-footer">
                 <p class="card-footer-item">
                   <span>
-                    View on <a href="#">Twitter</a>
+                    {{ product.price }}
                   </span>
                 </p>
               </footer>
@@ -32,6 +32,7 @@
 } */
 .card{
     box-shadow: 9px 7px 40px -6px rgba(0,0,0,0.25);
+    height:300px;
 }
 </style>
 
@@ -39,7 +40,8 @@
 <script>
 
 export default {
-    name:'Card'
+    name:'Card',
+    props:['product']
 }
 </script>
 
