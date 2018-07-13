@@ -1,21 +1,29 @@
 <template>
-     <div class="card">
-              <div class="card-content">
-                <p class="title">
-                  {{ product.description }}
-                </p>
-                <p class="subtitle">
-                  Jeff Atwood
-                </p>
-              </div>
-              <footer class="card-footer">
-                <p class="card-footer-item">
-                  <span>
-                    {{ product.price }}
-                  </span>
-                </p>
-              </footer>
-            </div>
+    <div class="card">
+  <div class="card-image">
+    <figure class="image is-4by3">
+      <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+    </figure>
+  </div>
+  <div class="card-content">
+    <div class="media">
+      <div class="media-content">
+        <p class="title is-4">{{product.name}}</p>
+        <p class="subtitle is-6">{{ product.price }}</p>
+      </div>
+    </div>
+
+    <div class="content">
+      {{ product.description }}
+      <a href="#">#css</a> <a href="#">#responsive</a>
+      <br>
+      <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+      <center>
+        <a class="button is-info is-outlined">Buy</a>
+      </center>
+    </div>
+  </div>
+</div>
 </template>
 
 <style lang="css" scoped>
@@ -31,8 +39,15 @@
     
 } */
 .card{
+    width: 100%;
+    margin: 0px;
     box-shadow: 9px 7px 40px -6px rgba(0,0,0,0.25);
-    height:300px;
+    transition: .3s;
+    /* height:300px; */
+}
+.card:hover{
+  width: 100%;
+  transform: scale(1.1,1.1);
 }
 </style>
 

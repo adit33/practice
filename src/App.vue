@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+ 
     <navbar></navbar>
     
     <section class="section">
@@ -28,7 +29,9 @@
       <div class="tile is-parent">
       <div class="tile is-child box">
         <div class="columns is-multiline">
-          
+          <div class="column is-6-tablet is-4-desktop" v-for="product in products">
+           <card :product="product"></card>
+          </div>
         </div>
       </div>
     </div>
@@ -46,19 +49,24 @@
   </div>
 </template>
 
-<style lang="scss">
-$footer-background-color:#000000;
-</style>
-
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  margin-bottom: 60px;
+  background-color: #F5F5F5;
+  font-family: -apple-system, BlinkMacSystemFont, 
+    "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", 
+    "Fira Sans", "Droid Sans", "Helvetica Neue", 
+    sans-serif;
+  * {
+    box-sizing: border-box;
+  }
 }
+p {
+  margin: 5px 0;
+  font-weight: 300;
+}
+
 </style>
 
 <script>
