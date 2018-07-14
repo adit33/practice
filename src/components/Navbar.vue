@@ -69,10 +69,10 @@
       <div class="search-item__image" style="background-image: url(http://placehold.it/100x100);"></div>
       <div class="search-item__content">
         <p class="text--medium">
-          {{ product.name }}
+           <a v-html="highlightText(product.name, input_search)"></a>
           <span class="label label--red text--upcase">Warning</span>
         </p>
-          <p class="text--small text--muted">{{ product.description }}</p>
+          <div v-html="highlightText(product.description,input_search)"></div>
         <p class="text--small text--muted">{{ product.price }}</p>
       </div>
     </li>
@@ -247,7 +247,9 @@
 .form {
   width: 100%;
 }
-
+.highlight {
+  color: #0096D9;
+}
 input[type="text"],
 input[type="date"]{
   border: 0;
@@ -309,6 +311,31 @@ input[type=search]:focus {
 </style>
 
 <script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  // Get all "navbar-burger" elements
+  const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+  // Check if there are any navbar burgers
+  if ($navbarBurgers.length > 0) {
+
+    // Add a click event on each of them
+    $navbarBurgers.forEach( el => {
+      el.addEventListener('click', () => {
+
+        // Get the target from the "data-target" attribute
+        const target = el.dataset.target;
+        const $target = document.getElementById(target);
+
+        // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+        el.classList.toggle('is-active');
+        $target.classList.toggle('is-active');
+
+      });
+    });
+  }
+
+});
 import axios from 'axios';
 export default {
     name:'Navbar',
@@ -341,7 +368,16 @@ export default {
 
           })
         }
-      }
+      },
+      highlightText: function (words, query) {
+          function pregQuote (str) {
+            return (str.trim() + '').replace(/([\\\.\+\*\?\[\^\]\$\(\)\{\}\=\!\<\>\|\:])/g, "\\$1")
+          }
+          var iQuery = new RegExp(pregQuote(query), 'ig')
+          return words.toString().replace(iQuery, function (matchedTxt, a, b) {
+            return ('<span style=\'color:#0096D9\'>' + matchedTxt + '</span>')
+          })
+        },
     },
     computed:{
       test(){
