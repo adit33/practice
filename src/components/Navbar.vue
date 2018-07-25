@@ -44,6 +44,7 @@
           <a class="navbar-item is-active" href="https://bulma.io/documentation/components/breadcrumb/">
             Components
           </a>
+          <router-link to="/about" class="navbar-item">About</router-link>
         </div>
       </div>
     </div>
@@ -382,7 +383,10 @@ export default {
     computed:{
       test(){
         return this.products.filter(t=>{
-          let tmp = t.name.toLowerCase().includes(this.input_search);
+          var tmp=null;
+          if(this.input_search !== ''){
+            tmp = t.name.toLowerCase().includes(this.input_search);
+          }
           return tmp;
         })
       }

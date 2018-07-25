@@ -19,7 +19,7 @@
       <br>
       <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
       <center>
-        <a class="button is-info is-outlined">Buy</a>
+        <router-link :to="{ path:'/product/'+product.id }" class="button is-info is-outlined">Buy</router-link>
       </center>
     </div>
   </div>
