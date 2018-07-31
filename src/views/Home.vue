@@ -68,8 +68,8 @@ p {
 </style>
 
 <script>
-import Breadcrumb from "./../components/Breadcrumb";
-import Card from "./../components/Card";
+import Breadcrumb from "@/components/Breadcrumb";
+import Card from "@/components/Card";
 import axios from 'axios';
 export default {
   components:{
@@ -82,9 +82,18 @@ export default {
     }
   },
   mounted(){
-    axios.get('http://localhost:3000/products').then(response=>{
-      this.products=response.data;
-    })
+    this.getProducts()
+  },
+  methods:{
+    async getProducts(){
+      try {
+          let url='http://localhost:3000/products';
+          const response = await axios.get(url);
+          this.products = response.data
+      } catch (error) {
+          console.log(error);
+      } 
+    }
   }
 }
 </script>

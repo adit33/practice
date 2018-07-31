@@ -1,5 +1,6 @@
 <template>
     <div>
+        <breadcrumb></breadcrumb>
         <div class="columns is-multiline is-mobile">
             <div class="column is-one-quarter">
                 <code>is-one-quarter</code>
@@ -38,8 +39,12 @@
 </template>
 <script>
 import axios from 'axios';
+import Breadcrumb from "./../components/Breadcrumb";
 export default {
     name:'DetailProduct',
+    components:{
+        'breadcrumb':Breadcrumb
+    },
     data(){
         return {
             product:null,

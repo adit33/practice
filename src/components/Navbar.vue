@@ -53,7 +53,7 @@
       <div class="navbar-item">
         <div class="field is-grouped">
           <p class="control has-icons-right">
-            <input class="input" v-model="input_search" @keyup="showSearchResult" @blur="hideSearchResult" type="search" placeholder="Search">
+            <input class="input" v-model="input_search" @keyup="showSearchResult" type="search" placeholder="Search">
               <span class="icon is-small is-right">
                 <i class="fas fa-search"></i>
               </span>
@@ -67,10 +67,11 @@
 <div class="search__container" v-if="is_visible">
   <ul class="card">  
     <li class="search-item" v-for="product in test">
+
       <div class="search-item__image" style="background-image: url(http://placehold.it/100x100);"></div>
       <div class="search-item__content">
         <p class="text--medium">
-           <a v-html="highlightText(product.name, input_search)"></a>
+           <router-link :to="{ path:'/product/'+product.id }" v-html="highlightText(product.name, input_search)"></router-link>
           <span class="label label--red text--upcase">Warning</span>
         </p>
           <div v-html="highlightText(product.description,input_search)"></div>
@@ -348,9 +349,7 @@ export default {
       }
     },
     mounted(){
-      axios.get('http://localhost:3000/products').then(response=>{
-        this.products=response.data;
-      })
+     this.getSearchProducts()
     },
     methods:{
       showSearchResult(){
@@ -359,15 +358,13 @@ export default {
       hideSearchResult(){
         this.is_visible = false;
       },
-      getSearchProducts(){
-        if(this.input_search !== null){
-          axios.get('products')
-          .then(response=>{
-            
-          })
-          .catch(errors=>{
-
-          })
+      async getSearchProducts(){
+        try {
+          let url = 'http://localhost:3000/products';
+           const response =await axios.get(url);
+           this.products = response.data; 
+        } catch (error) {
+          
         }
       },
       highlightText: function (words, query) {

@@ -2,12 +2,12 @@
     <nav class="breadcrumb" aria-label="breadcrumbs">
   <ul>
     <li>
-      <a href="#">
+      <router-link to="/">
         <span class="icon is-small">
           <i class="fas fa-home" aria-hidden="true"></i>
         </span>
-        <span>Bulma</span>
-      </a>
+        <span>Home</span>
+      </router-link >
     </li>
     <li>
       <a href="#">
@@ -38,6 +38,7 @@
 </template>
 
 <script>
+
 export default {
     
 }
