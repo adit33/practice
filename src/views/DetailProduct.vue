@@ -47,18 +47,20 @@ export default {
     },
     data(){
         return {
-            product:null,
+            product:[],
         }
     },
     mounted(){
         this.getProduct();
     },
     methods:{
-        getProduct(){
+        async getProduct(){
             let url = 'http://localhost:3000/products/'+this.$route.params.id;
-            axios.get(url).then(response=>{
-                this.product=response.data;
-            });
+            const response = await axios.get(url);
+            this.product = response.data;
+            // setTimeout(() => {
+                
+            // }, 1000);
         }
     }
 }
